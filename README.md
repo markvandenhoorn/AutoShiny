@@ -48,6 +48,7 @@ To create this setup, the following materials are required.
 | Solder                             | 1x  |
 | Tri-wing screwdriver (Y00 or Y0)   | 1x  |
 | Small Phillips screwdriver (PH00/PH000) | 1x |
+| Something to cut the plastic of the ds with | 1x |
 
 ---
 
