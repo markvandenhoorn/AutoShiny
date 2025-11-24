@@ -74,7 +74,8 @@ To create this setup, the following materials are required.
 
 ## The Setup
 ### Nintendo DS
-On the DS side there is relatively little setup. 
+On the DS side there is relatively little setup. First, you obviously need to open the ds up. I recommend disconnecting the top and bottom screen, as well as the grey and black wire so you have easy access to everything. 
+
 Per button you want to automate, you take a piece of 30 AWG wire (stripped a few mm's at the end), and solder it to the test pin you want to automate. I wanted to be able to automate all buttons, so I attached wires to all test pins. Below is a picture showing which test pins control which buttons (found here: https://www.acidmods.com/moddedmatt/dslight%20pinout.jpg):
 
 <img src="https://github.com/user-attachments/assets/699694e3-0936-467c-a418-1852cccea609" width="70%">
@@ -85,7 +86,7 @@ To make the ds playable by hand as well, I made it so the wires came out of the 
 
 <img width="70%" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
 
-These 30AWG wires are not very much suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. 
+These 30AWG wires are not very much suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. If you want to be able to put the ds back together fully, make holes in the DS's housing where the wires will come out. After this you can reassemble the DS. 
 
 ### The Raspberry Pi
 On the Raspberry Pi side there is very little setup. All you need to do is attach one female to male jumper wire to a GPIO pin of the Pi (female side on the pin, of course). The male side will later go into the breadboard. Make sure you also attach one jumper wire to a ground pin on the Pi. 
@@ -102,3 +103,9 @@ Next, we have to make a little circuit for each of the buttons we want to automa
 - Connect a 10k ohm resistor from the gate of the Mosfet to ground.
 - Put one of the wires attached to a GPIO pin on this gate rail as well.
 - Have a wire going from the source of the Mosfet to ground.
+
+<img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/0d2a6c1e-4414-485b-80af-31241f9059ea" />
+
+That's it! You now have the button completely wired up and ready to go. All you need to do now is control it with the Pi.
+
+## The Code
