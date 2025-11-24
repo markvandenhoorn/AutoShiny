@@ -24,7 +24,9 @@ Each button on the nintendo ds acts as a 'switch' for a circuit. The circuit is 
 The Raspberry Pi is the controller and the listening device. It can send signals to our circuit, which simulates a button press. It also runs a script that decides which buttons are being pressed at what moment, and listens for a shiny sound. It sends these signals via the GPIO pins (one for each button) to the breadboard, our next component.
 
 ### The Breadboard
-The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
+The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). 
+
+What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
 
 In short, the ds's button is part of an open circuit, and giving the circuit access to ground makes it closed, which is then registered as a button press. We control the button's acces to ground using a switch/bridge in the form of a mosfet, which opens and closes depending on the output of a Raspberry Pi GPIO pin, which is fully automatable.
 
@@ -86,7 +88,9 @@ To make the ds playable by hand as well, I made it so the wires came out of the 
 
 <img width="70%" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
 
-These 30AWG wires are not very much suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. If you want to be able to put the ds back together fully, make holes in the DS's housing where the wires will come out. After this you can reassemble the DS. 
+These 30AWG wires are not very well suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. 
+
+You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. If you want to be able to put the ds back together fully, make holes in the DS's housing where the wires will come out. After this you can reassemble the DS. 
 
 ### The Raspberry Pi
 On the Raspberry Pi side there is very little setup. All you need to do is attach one female to male jumper wire to a GPIO pin of the Pi (female side on the pin, of course). The male side will later go into the breadboard. Make sure you also attach one jumper wire to a ground pin on the Pi. 
@@ -106,6 +110,12 @@ Next, we have to make a little circuit for each of the buttons we want to automa
 
 <img width="50%" height="50%" alt="image" src="https://github.com/user-attachments/assets/0d2a6c1e-4414-485b-80af-31241f9059ea" />
 
-That's it! You now have the button completely wired up and ready to go. All you need to do now is control it with the Pi.
+That's it! You now have the button completely wired up and ready to go. All you need to do now is control it with the Pi and set up the shiny detection part. 
 
-## The Code
+## The Code (WIP, no code available yet)
+Note that the code I wrote works very well for me, but certain values, thresholds and variables may need to be tweaked before you can use it yourself. 
+I will walk you through everything that definitely has to be prepared in order for the code to work, but know that even after that you might need to tweak values yourself. This may mean that writing the code yourself is easier. Feel free to use my code as a baseline or as inspiration when you do. 
+
+
+The main premise of the code is powering the GPIO pins in a sequence such that you will encounter a pokemon, then reset or go to the next encounter.
+The shiny detection is harder, I did it using sounddevice and checking the incoming sound against a shiny sound template. It is also possible to use a photoresistor to detect colors.  
