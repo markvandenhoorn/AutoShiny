@@ -10,7 +10,7 @@ This GitHub repository functions as a showcase for my project, as well as a loos
 ## How It Works (High level)
 There are 3 main components in this setup: 
 - The Nintendo DS (which plays the game and registers the input)
-- The Raspberry Pi (which controls the DS and registers the sounds)
+- The Raspberry Pi (which controls the DS and registers the sounds/detects the shinies)
 - The breadboard (which acts as the 'bridge', connecting the Pi and the DS with electronics)
 
 Simply said, the Raspberry Pi acts as a controller by sending signals to the buttons of the DS, such that the DS registers these as button presses. The Pi also listens for sounds, and notifies the user when a shiny Pokémon sound is detected. By combining these two elements, shiny hunts can be set up for random encounters, soft resets, fishing etc.
