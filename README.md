@@ -17,9 +17,7 @@ Simply said, the Raspberry Pi acts as a controller by sending signals to the but
 
 ## Materials
 To create this setup, the following materials are required.  
-(*I recommend buying a few extra of most materials.*)
-
----
+(*I recommend buying a few extra of most wires and electronics.*)
 
 ### **Hardware**
 | Item                                                              | Qty |
@@ -27,8 +25,6 @@ To create this setup, the following materials are required.
 | Nintendo DS (best to use one you are not emotionally attached to) | 1x  |
 | Raspberry Pi (Zero 2W or better) with power supply (assuming you already set this up with Raspian etc)| 1x  |
 | Breadboard (400 or 800 points — I used 800)                       | 1x  |
-
----
 
 ### **Wires & Electronics**
 | Item                                                              | Qty |
@@ -39,8 +35,6 @@ To create this setup, the following materials are required.
 | 2N7000 N-Channel Logic Level MOSFETs                               | 12x |
 | 30 AWG solid-core wire                                            | 5m (1m probably enough) |
 
----
-
 ### **Tools**
 | Item                               | Qty |
 |------------------------------------|-----|
@@ -49,8 +43,6 @@ To create this setup, the following materials are required.
 | Tri-wing screwdriver (Y00 or Y0)   | 1x  |
 | Small Phillips screwdriver (PH00/PH000) | 1x  |
 | Something to cut the plastic of the ds with | 1x  |
-
----
 
 ### **Optional**
 | Item                                                | Qty | Did I use this? |
@@ -64,7 +56,9 @@ To create this setup, the following materials are required.
 | Multimeter (*mostly useful if you shorted something*)| 1x  | Yes (Because I blew a fuse) |
 | Isopropyl alcohol + (tooth)brush                    | 1x  | Yes (Good practice) |
 
+## The Setup
+### Nintendo DS
+On the DS side there is relatively little setup. 
+Per button you want to automate, you take the 30 AWG wire (stripped a few mm's at the end), and solder it to the test pin you want to automate. Below here is a picture showing which test pins control which buttons:
+<img width="1185" height="2064" alt="pinout" src="https://github.com/user-attachments/assets/a5fab21c-6272-482b-9651-ba88c8ae0845" />
 
-
-## The Nintendo DS
-On the DS side there is relatively little setup. T
