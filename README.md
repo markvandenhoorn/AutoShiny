@@ -60,5 +60,5 @@ To create this setup, the following materials are required.
 ### Nintendo DS
 On the DS side there is relatively little setup. 
 Per button you want to automate, you take the 30 AWG wire (stripped a few mm's at the end), and solder it to the test pin you want to automate. Below here is a picture showing which test pins control which buttons:
-![dslight pinout](https://github.com/user-attachments/assets/54d859cc-6726-4e75-9aa1-9b0bbce422a3)
+<img src="https://github.com/user-attachments/assets/699694e3-0936-467c-a418-1852cccea609" width="50%">
 
