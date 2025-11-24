@@ -24,7 +24,7 @@ Each button on the nintendo ds acts as a 'switch' for a circuit. The circuit is 
 The Raspberry Pi is the controller and the listening device. It can send signals to our circuit, which simulates a button press. It also runs a script that decides which buttons are being pressed at what moment, and listens for a shiny sound. It sends these signals via the GPIO pins (one for each button) to the breadboard, our next component.
 
 ### The Breadboard
-The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). 
+The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (picture in The Setup part for a schematic). 
 
 What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
 
