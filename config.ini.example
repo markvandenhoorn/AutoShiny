@@ -1,0 +1,31 @@
+[Pushover]
+user_key = YOUR_USER_KEY
+api_token = YOUR_API_TOKEN
+
+[Audio]
+input_device = hw:2,0
+sample_rate = 48000
+
+[Thresholds]
+battle = 10000
+shiny_gen3 = 700
+shiny_gen4 = 750
+shiny_gen5 = 900
+
+[Timings]
+press_time = 0.25
+extra_wait_time = 2.5
+
+[GPIO]
+A = 5
+B = 4
+X = 6
+Y = 17
+UP = 20
+DOWN = 16
+LEFT = 19
+RIGHT = 21
+START = 22
+SELECT = 23
+L = 13
+R = 12
