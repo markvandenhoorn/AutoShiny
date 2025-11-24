@@ -120,17 +120,26 @@ The main premise of the code is powering the GPIO pins in a sequence such that y
 The shiny detection is harder, I did it using sounddevice and checking the incoming sound against a shiny sound template. It is also possible to use a photoresistor to detect colors.  
 
 1.  **Install Dependencies:**
-    ```bash
-    pip install RPi.GPIO pushover-python
+    On your raspberry pi, run:
+    ```
+    sudo apt-get update
+    sudo apt-get install python3-dev
+    sudo apt-get install libasound2-dev
     ```
 
-2.  **Configure the Script:**
+    Then
+
+    ```
+    pip3 install sounddevice RPi.GPIO pushover-notifications numpy scipy
+    ```
+
+3.  **Configure the Script:**
     *   Rename the `config.ini.example` file to `config.ini`.
     *   Open `config.ini` with a text editor.
     *   Fill in your Pushover API keys if you want notifications.
     *   Adjust the GPIO pin numbers and audio input device to match your specific setup. Change `Thresholds` and `Timings` if necessary.
 
-3.  **Run the Script:**
+4.  **Run the Script:**
     ```bash
     python main.py
     ```
