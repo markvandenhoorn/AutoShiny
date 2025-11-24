@@ -26,7 +26,7 @@ The Raspberry Pi is the controller and the listening device. It can send signals
 ### The Breadboard
 The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
 
-In short, the ds's button is part of an open circuit, and giving the circuit access to ground makes it closed, which is then registered as a button press. We control the button's acces to ground using a switch/bridge in the form of a mosfet, which opens and closes depending on the output of a Raspberry Pi GPIO pin. 
+In short, the ds's button is part of an open circuit, and giving the circuit access to ground makes it closed, which is then registered as a button press. We control the button's acces to ground using a switch/bridge in the form of a mosfet, which opens and closes depending on the output of a Raspberry Pi GPIO pin, which is fully automatable.
 
 ## Materials
 To create this setup, the following materials are required.  
@@ -85,16 +85,20 @@ To make the ds playable by hand as well, I made it so the wires came out of the 
 
 <img width="70%" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
 
-These 30AWG wires are not very much suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. You might also want to do this before soldering the wires to the motherboard.
+These 30AWG wires are not very much suited for breadboard use, however. Therefore it is wise to join each of these wires to a jumper wire. I took off the header pin of a male to male jumper wire, stripped it +/- 2cm, and then joined the loose end of the 30AWG wire with this stripped part of the jumper wire. The result is a wire that is soldered to the test pin, which has a header pin at the end which we can use in the breadboard. You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. 
 
 ### The Raspberry Pi
 On the Raspberry Pi side there is very little setup. All you need to do is attach one female to male jumper wire to a GPIO pin of the Pi (female side on the pin, of course). The male side will later go into the breadboard. Make sure you also attach one jumper wire to a ground pin on the Pi. 
 
-By now you should have 30AWG wires attached to all desired test pins on the ds, with each of those wires ending in a header pin. For each one of those wires you should also have one jumper wire attached to a GPIO pin of the Pi (e.g. if you only want to automate L + R + START + SELECT you need wires soldered to 4 test pins and 4 wires on GPIO pins). The DS and the Pi are completely disconnected from each other right now.
+By now you should have 30AWG wires attached to all desired test pins on the ds, with each of those wires ending in a header pin. For each one of those wires you should also have one jumper wire attached to a GPIO pin of the Pi + 1 for ground (e.g. if you only want to automate L + R + START + SELECT you need wires soldered to those 4 test pins, as well as 4 wires on GPIO pins). The DS and the Pi are completely disconnected from each other right now.
 
 ### The Breadboard
 This is where we put everything together. First and foremost, we want to create common ground between the Pi and the DS. We do this by sticking the jumper wire that is connected to the ground pin on the Pi, in the ground rail of the breadboard. Then, you take the wire that is soldered to the ground point on the DS, and put that in the same ground rail. Done!
 
-Next, we have to make a little circuit for each of the buttons we want to automate. I will show how to do it for 1 button, after which you can replicate this as many times as you need. But first, a small explanation as to what exactly we will need to do (because otherwise this might all seem like magic to inexperienced modders). 
+Next, we have to make a little circuit for each of the buttons we want to automate. I will show how to do it for 1 button, after which you can replicate this as many times as you need. 
 
-But 
+- First, put the Mosfet in the breadboard, with each of its legs going into a different rail.
+- Put the wire coming from the DS test pin in the rail connected to the Mosfet's Drain.
+- Connect a 10k ohm resistor from the gate of the Mosfet to ground.
+- Put one of the wires attached to a GPIO pin on this gate rail as well.
+- Have a wire going from the source of the Mosfet to ground.
