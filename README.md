@@ -112,12 +112,10 @@ Next, we have to make a little circuit for each of the buttons we want to automa
 
 That's it! You now have the button completely wired up and ready to go. All you need to do now is control it with the Pi and set up the shiny detection part. 
 
-## The Code (WIP, no code available yet)
+## The Code (WIP, Please notify me if anything does not work properly)
 Note that the code I wrote works very well for me, but certain values, thresholds and variables may need to be tweaked before you can use it yourself. 
 I will walk you through everything that definitely has to be prepared in order for the code to work, but know that even after that you might need to tweak values yourself. This may mean that writing the code yourself is easier. Feel free to use my code as a baseline or as inspiration when you do. 
-
-The main premise of the code is powering the GPIO pins in a sequence such that you will encounter a pokemon, then reset or go to the next encounter.
-The shiny detection is harder, I did it using sounddevice and checking the incoming sound against a shiny sound template. It is also possible to use a photoresistor to detect colors.  
+For now, only random encounters are reliably working for gen 4 and 5. 
 
 1.  **Install Dependencies:**
     On your raspberry pi, run:
