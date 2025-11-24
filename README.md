@@ -116,6 +116,22 @@ That's it! You now have the button completely wired up and ready to go. All you 
 Note that the code I wrote works very well for me, but certain values, thresholds and variables may need to be tweaked before you can use it yourself. 
 I will walk you through everything that definitely has to be prepared in order for the code to work, but know that even after that you might need to tweak values yourself. This may mean that writing the code yourself is easier. Feel free to use my code as a baseline or as inspiration when you do. 
 
-
 The main premise of the code is powering the GPIO pins in a sequence such that you will encounter a pokemon, then reset or go to the next encounter.
 The shiny detection is harder, I did it using sounddevice and checking the incoming sound against a shiny sound template. It is also possible to use a photoresistor to detect colors.  
+
+1.  **Install Dependencies:**
+    ```bash
+    pip install RPi.GPIO pushover-python
+    ```
+
+2.  **Configure the Script:**
+    *   Rename the `config.ini.example` file to `config.ini`.
+    *   Open `config.ini` with a text editor.
+    *   Fill in your Pushover API keys if you want notifications.
+    *   Adjust the `Thresholds`, `Timings`, and `GPIO` pin numbers to match your specific setup.
+
+3.  **Run the Script:**
+    ```bash
+    python main.py
+    ```
+    The script will then ask you for the Pokémon generation and the type of hunt you want to perform.
