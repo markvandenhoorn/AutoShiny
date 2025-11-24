@@ -141,4 +141,4 @@ For now, only random encounters are reliably working for gen 4 and 5.
     ```bash
     python main.py
     ```
-    The script will then ask you for the Pokémon generation and the type of hunt you want to perform, as well as whether any extra time has to be added for ability procs        and weather messages etc. Note that at this point in time, only random encounters are reliably       working. 
+    The script will then ask you for the Pokémon generation and the type of hunt you want to perform, as well as whether any extra time has to be added for ability procs        and weather messages etc. Note that at this point in time, only random encounters are reliably working. Happy hunting!
