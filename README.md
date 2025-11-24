@@ -17,12 +17,29 @@ Simply said, the Raspberry Pi acts as a controller by sending signals to the but
 
 ## Materials
 To create this setup these materials are required (I recommend buying a few more than listed of most materials):
+#### Hardware:
 - Nintendo DS (best to use one you are not emotionally attached to)              1x
+- Raspberry Pi (I think zero 2W or better would work)                            1x
+- Breadboard (400 or 800 points would work, I used 800)                          1x
+
+#### Wires and Electronics
 - Female to Male jumper wires (I used quite long ones to be safe)                12x
 - Male to Male jumper wires                                                      +/- 30x
 - 10k ohm resistors                                                              12x
 - 2N7000 N-Channel Logic Level Mosfets (don't get scared by the terminology)     12x
 - 30 AWG solid core wire                                                         1x 5m (1m is probably enough, I bought a lot to be safe)
+
+#### Tools
+- Soldering Iron                                                                 1x
+- Solder                                                                         1x
+- Tri-wing (Y00 or Y0) screwdriver                                               1x
+- Small Phillips screwdriver (PH00 or PH000)                                     1x
+- 
+
+#### Optional:
+- Flux (But highly recommended)                                                  1x
+- Wire cutters                                                                   1x
+- 0.5 Amp fuses (for when you touch the wrong test pin)                          however many you think you need
 
 ## The Nintendo DS
 On the DS side there is relatively little setup. T
