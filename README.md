@@ -25,7 +25,7 @@ To create this setup, the following materials are required.
 | Item                                                              | Qty |
 |-------------------------------------------------------------------|-----|
 | Nintendo DS (best to use one you are not emotionally attached to) | 1x  |
-| Raspberry Pi (Zero 2W or better)                                  | 1x  |
+| Raspberry Pi (Zero 2W or better) with power supply (assuming you already set this up with Raspian etc)| 1x  |
 | Breadboard (400 or 800 points — I used 800)                       | 1x  |
 
 ---
@@ -56,7 +56,13 @@ To create this setup, the following materials are required.
 |-----------------------------------------------------|-----|
 | Flux (*highly recommended*)                         | 1x  |
 | Wire cutters                                        | 1x  |
-| 0.5A fuses (*for protection if you short a test pin*) | As needed |
+| 0.5A fuses (*for when you touch the wrong test pin lol*) | As needed |
+| Heat-shrink tubing                                  | 1x  |
+| Extra header pins                                   | As needed |
+| Tweezers                                            | 1x  | 
+| Multimeter (*mostly useful if you shorted something*)| 1x  |
+| Isopropyl alcohol + (tooth)brush                    | 1x  |
+
 
 
 ## The Nintendo DS
