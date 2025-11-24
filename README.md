@@ -128,7 +128,7 @@ The shiny detection is harder, I did it using sounddevice and checking the incom
     *   Rename the `config.ini.example` file to `config.ini`.
     *   Open `config.ini` with a text editor.
     *   Fill in your Pushover API keys if you want notifications.
-    *   Adjust the `Thresholds`, `Timings`, and `GPIO` pin numbers to match your specific setup.
+    *   Adjust the GPIO pin numbers and audio input device to match your specific setup. Change `Thresholds` and `Timings` if necessary.
 
 3.  **Run the Script:**
     ```bash
