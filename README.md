@@ -60,9 +60,13 @@ To create this setup, the following materials are required.
 ### Nintendo DS
 On the DS side there is relatively little setup. 
 Per button you want to automate, you take the 30 AWG wire (stripped a few mm's at the end), and solder it to the test pin you want to automate. Below here is a picture showing which test pins control which buttons (found here: https://www.acidmods.com/moddedmatt/dslight%20pinout.jpg):
+
 <img src="https://github.com/user-attachments/assets/699694e3-0936-467c-a418-1852cccea609" width="70%">
+
 *Important: Make sure to also solder a wire to a ground point on the ds, which you will need to create a common ground between the Pi and the DS. (see next picture for which ground point I chose)*
+
 To make the ds playable by hand as well, I made it so the wires came out of the sides of the ds. For this I cut a few pieces of plastic out of the sides, through which the wires could come out of the ds. Here is a schematic of how I routed the wires approximately:
+
 <img width="1280" height="800" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
 
 
