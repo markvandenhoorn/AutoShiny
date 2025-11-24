@@ -52,16 +52,16 @@ To create this setup, the following materials are required.
 ---
 
 ### **Optional**
-| Item                                                | Qty |
-|-----------------------------------------------------|-----|
-| Flux (*highly recommended*)                         | 1x  |
-| Wire cutters                                        | 1x  |
-| 0.5A fuses (*for when you touch the wrong test pin lol*) | As needed |
-| Heat-shrink tubing                                  | 1x  |
-| Extra header pins                                   | As needed |
-| Tweezers                                            | 1x  | 
-| Multimeter (*mostly useful if you shorted something*)| 1x  |
-| Isopropyl alcohol + (tooth)brush                    | 1x  |
+| Item                                                | Qty | Did I use this? |
+|-----------------------------------------------------|-----|-----------------|
+| Flux (*highly recommended*)                         | 1x  | Yes |
+| Wire cutters                                        | 1x  | No |
+| 0.5A fuses (*for when you touch the wrong test pin lol*) | As needed | Yes (because I'm stupid) |
+| Heat-shrink tubing                                  | 1x  | No |
+| Extra header pins                                   | As needed | No (I stripped them off male to male jumper wires |
+| Tweezers                                            | 1x  | Yes |
+| Multimeter (*mostly useful if you shorted something*)| 1x  | Yes (Because I blew a fuse) |
+| Isopropyl alcohol + (tooth)brush                    | 1x  | Yes (Good practice) |
 
 
 
