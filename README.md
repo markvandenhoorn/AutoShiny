@@ -6,14 +6,27 @@ This GitHub repository functions as a showcase for my project, as well as a loos
 <p align="center">
   <img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%" height="50%">
 </p>
-
-## How It Works 
+ 
+## How It Works (High level)
 There are 3 main components in this setup: 
 - The Nintendo DS (which plays the game and registers the input)
 - The Raspberry Pi (which controls the DS and registers the sounds)
 - The breadboard (which acts as the 'bridge', connecting the Pi and the DS with electronics)
 
 Simply said, the Raspberry Pi acts as a controller by sending signals to the buttons of the DS, such that the DS registers these as button presses. The Pi also listens for sounds, and notifies the user when a shiny Pokémon sound is detected. By combining these two elements, shiny hunts can be set up for random encounters, soft resets, fishing etc.
+
+## How it Works (Detailed)
+### Nintendo DS
+The DS runs the game and registers button presses.
+Each button on the nintendo ds acts as a 'switch' for a circuit. The circuit is open by default, meaning that no electricity can flow. When you press a button, the circuit closes and electricity can flow. The DS detects this and registers it as a putton press. By soldering a wire to the test pin corresponding to a button, we can simulate a button press electronically.
+
+### Raspberry Pi
+The Raspberry Pi is the controller and the listening device. It can send signals to our circuit, which simulates a button press. It also runs a script that decides which buttons are being pressed at what moment, and listens for a shiny sound. It sends these signals via the GPIO pins (one for each button) to the breadboard, our next component.
+
+### The Breadboard
+The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
+
+In short, the ds's button is part of an open circuit, and giving the circuit access to ground makes it closed, which is then registered as a button press. We control the button's acces to ground using a switch/bridge in the form of a mosfet, which opens and closes depending on the output of a Raspberry Pi GPIO pin. 
 
 ## Materials
 To create this setup, the following materials are required.  
@@ -34,6 +47,9 @@ To create this setup, the following materials are required.
 | 10kΩ resistors                                                     | 12x |
 | 2N7000 N-Channel Logic Level MOSFETs                               | 12x |
 | 30 AWG solid-core wire                                            | 5m (1m probably enough) |
+| Aux cable                                                         | 1x  |
+| 3,5 mm Aux to 2x Jack Female (stereo and microphone)              | 1x  |
+| USB-A 3.0 to 3.5mm Jack Audio Adapter (has to work with mic)      | 1x  |
 
 ### **Tools**
 | Item                               | Qty |
@@ -80,7 +96,5 @@ By now you should have 30AWG wires attached to all desired test pins on the ds, 
 This is where we put everything together. First and foremost, we want to create common ground between the Pi and the DS. We do this by sticking the jumper wire that is connected to the ground pin on the Pi, in the ground rail of the breadboard. Then, you take the wire that is soldered to the ground point on the DS, and put that in the same ground rail. Done!
 
 Next, we have to make a little circuit for each of the buttons we want to automate. I will show how to do it for 1 button, after which you can replicate this as many times as you need. But first, a small explanation as to what exactly we will need to do (because otherwise this might all seem like magic to inexperienced modders). 
-
-Each button on the nintendo ds acts as a 'switch' for a circuit. The circuit is open by default, meaning that no electricity can flow. When you press the button, the circuit closes and electricity can flow. The DS detects this and registers it as a putton press. What we want to do, is move this mechanism outside the ds, so we can automate it with the Pi. That is why you attach the wires to the test pins, so we can open and close the circuit outside of the ds (those test pins basically work the same as the regular button pins, just more convenient to use). 
 
 But 
