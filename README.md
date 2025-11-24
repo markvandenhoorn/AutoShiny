@@ -2,7 +2,9 @@
 Automated shiny Pokémon hunting setup on Nintendo DS Lite.
 It is able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
 
-<img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%" height="50%">
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%" height="50%">
+</p>
 
 ## Introduction
 This GitHub repository functions as a showcase for my project, as well as a loose guide on how to create such a setup. Please note, however, that this is not a step by step tutorial, but rather a conceptual guide to help you understand the overall setup and replicate it in your own way. 
