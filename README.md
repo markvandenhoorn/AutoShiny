@@ -2,7 +2,7 @@
 Automated shiny Pokémon hunting setup on Nintendo DS Lite.
 It is able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
 
-![WhatsApp Image 2025-11-24 at 12 15 27 (2)](https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be)
+<img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%">
 
 ## Introduction
 This GitHub repository functions as a showcase for my project, as well as a loose guide on how to create such a setup. Please note, however, that this is not a step by step tutorial, but rather a conceptual guide to help you understand the overall setup and replicate it in your own way. 
@@ -67,6 +67,6 @@ Per button you want to automate, you take the 30 AWG wire (stripped a few mm's a
 
 To make the ds playable by hand as well, I made it so the wires came out of the sides of the ds. For this I cut a few pieces of plastic out of the sides, through which the wires could come out of the ds. Here is a schematic of how I routed the wires approximately:
 
-<img width="1280" height="800" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
+<img width="70%" alt="Ground" src="https://github.com/user-attachments/assets/3270041a-75a6-4917-bf70-d7d34b088e21" />
 
 
