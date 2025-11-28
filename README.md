@@ -1,12 +1,14 @@
 # AutoShiny
 Automated shiny Pokémon hunting setup on Nintendo DS Lite.
-It is able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
+It is (eventually) able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
 This GitHub repository functions as a showcase for my project, as well as a loose guide on how to create such a setup. Please note, however, that this is not a step by step tutorial, but rather a conceptual guide to help you understand the overall setup and replicate it in your own way. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%" height="50%">
 </p>
- 
+***Important: ***
+Right now it only reliable works with gen 4 random encounters. Soft resets have not been extensively tested and gen 5 weather and abilities interfere with the random encounter logic.
+
 ## How It Works (High level)
 There are 3 main components in this setup: 
 - The Nintendo DS (which plays the game and registers the input)
