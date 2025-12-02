@@ -136,13 +136,28 @@ def main():
                     print("\n\n*** SHINY HUNT SUCCESSFUL! Stopping automation. ***")
                     break
 
-            if hunt_type == 'soft_reset' and generation == '5':
+            elif hunt_type == 'soft_reset' and generation == '5':
                 encounter_count += 1
                 SR = automovement.SoftReset()
                 SR.reset()
                 SR.before_listening_gen5()
                 print(f"Encounter number {encounter_count}")
                 shiny_timeout = 8 + extra_wait_time
+                shiny_found = detector.wait_for_shiny(timeout=shiny_timeout)
+                if shiny_found:
+                    send_shiny_notification(encounter_count)
+                    print("\n\n*** SHINY HUNT SUCCESSFUL! Stopping automation. ***")
+                    break
+
+            elif hunt_type == 'starter' and generation == '4':
+                encounter_count += 1
+                STARTER = automovement.Starter()
+                STARTER.reset()
+                STARTER.before_listening_gen4()
+                print(f"Encounter number {encounter_count}")
+                # wait for starly to come in
+                time.sleep(9)
+                shiny_timeout = 5
                 shiny_found = detector.wait_for_shiny(timeout=shiny_timeout)
                 if shiny_found:
                     send_shiny_notification(encounter_count)

@@ -118,5 +118,25 @@ class RandomEncounter:
         press_a()
         time.sleep(2)
 
+class Starter:
+    def reset(self):
+        time.sleep(0.5)
+        press_multiple(["L", "R", "START", "SELECT"], hold_time=0.25)
+
+    def before_listening_gen4(self):
+        """Everything done before waiting for shiny sound."""
+        time.sleep(9.5) 
+        press_a()
+        time.sleep(2)
+        press_a()
+        time.sleep(3)
+        press_a()
+        time.sleep(2.5)
+        press_up()
+
+        end_time = time.time() + 64
+        while time.time() < end_time:
+            press_a()
+            time.sleep(0.25)
 
 
