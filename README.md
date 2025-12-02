@@ -1,16 +1,18 @@
 # AutoShiny
 Automated shiny Pokémon hunting setup on Nintendo DS Lite.
-It is able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
+It is (eventually) able to passively find shiny Pokémon in generations 3, 4 and 5 of the mainline Pokémon games.
 This GitHub repository functions as a showcase for my project, as well as a loose guide on how to create such a setup. Please note, however, that this is not a step by step tutorial, but rather a conceptual guide to help you understand the overall setup and replicate it in your own way. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/adf6b044-bcaf-43bc-b8ea-3cf8f523e8be" width="50%" height="50%">
 </p>
- 
+***Important: ***
+Right now it only reliable works with gen 4 random encounters. Soft resets have not been extensively tested and gen 5 weather and abilities interfere with the random encounter logic.
+
 ## How It Works (High level)
 There are 3 main components in this setup: 
 - The Nintendo DS (which plays the game and registers the input)
-- The Raspberry Pi (which controls the DS and registers the sounds)
+- The Raspberry Pi (which controls the DS and registers the sounds/detects the shinies)
 - The breadboard (which acts as the 'bridge', connecting the Pi and the DS with electronics)
 
 Simply said, the Raspberry Pi acts as a controller by sending signals to the buttons of the DS, such that the DS registers these as button presses. The Pi also listens for sounds, and notifies the user when a shiny Pokémon sound is detected. By combining these two elements, shiny hunts can be set up for random encounters, soft resets, fishing etc.
@@ -24,7 +26,7 @@ Each button on the nintendo ds acts as a 'switch' for a circuit. The circuit is 
 The Raspberry Pi is the controller and the listening device. It can send signals to our circuit, which simulates a button press. It also runs a script that decides which buttons are being pressed at what moment, and listens for a shiny sound. It sends these signals via the GPIO pins (one for each button) to the breadboard, our next component.
 
 ### The Breadboard
-The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (so picture below for a schematic). 
+The breadboard contains all the electronics. Each button has its own circuit, containing: A wire going to the common ground, a wire coming from the Raspberry Pi, the wire coming from the DS's test pin, a N-channel logic level Mosfet and a 10k ohm resistor going to common ground as well (picture in The Setup part for a schematic). 
 
 What essentialy happens, is that the wire from the DS is connected to one end of the Mosfet, and the wire going to ground is connected to the other side. The Mosfet itself acts as a bridge; when there is no voltage on the Mosfet, the bridge is open and no electricity can flow between the DS's test pin and ground (the circuit is open, no button press). We attach a wire from a GPIO pin of the Raspberry Pi to this Mosfet gate, so that we can control it. Now, when we send a signal to the Mosfet gate with the Pi, the bridge closes and electricity can flow, allowing the DS to detect this flow and register a button press. 
 
@@ -93,7 +95,7 @@ These 30AWG wires are not very well suited for breadboard use, however. Therefor
 You might also want to do this before soldering the wires to the motherboard. I also recommend labeling your wires, so you know which wire is attached to which test pin. If you want to be able to put the ds back together fully, make holes in the DS's housing where the wires will come out. After this you can reassemble the DS. 
 
 ### The Raspberry Pi
-On the Raspberry Pi side there is very little setup. All you need to do is attach one female to male jumper wire to a GPIO pin of the Pi (female side on the pin, of course). The male side will later go into the breadboard. Make sure you also attach one jumper wire to a ground pin on the Pi. 
+On the Raspberry Pi side there is very little setup. All you need to do is attach one female to male jumper wire to a GPIO pin of the Pi (female side on the pin, of course). The male side will later go into the breadboard. Make sure you also attach one jumper wire to a ground pin on the Pi. You also need to put one end of the aux cable into the audio splitter, and that into the aux to usb converter, which goes into the usb port of the Raspberry Pi. The other end of the aux cable later goes into the DS.
 
 By now you should have 30AWG wires attached to all desired test pins on the ds, with each of those wires ending in a header pin. For each one of those wires you should also have one jumper wire attached to a GPIO pin of the Pi + 1 for ground (e.g. if you only want to automate L + R + START + SELECT you need wires soldered to those 4 test pins, as well as 4 wires on GPIO pins). The DS and the Pi are completely disconnected from each other right now.
 
@@ -112,26 +114,33 @@ Next, we have to make a little circuit for each of the buttons we want to automa
 
 That's it! You now have the button completely wired up and ready to go. All you need to do now is control it with the Pi and set up the shiny detection part. 
 
-## The Code (WIP, no code available yet)
+## The Code (WIP, Please notify me if anything does not work properly)
 Note that the code I wrote works very well for me, but certain values, thresholds and variables may need to be tweaked before you can use it yourself. 
 I will walk you through everything that definitely has to be prepared in order for the code to work, but know that even after that you might need to tweak values yourself. This may mean that writing the code yourself is easier. Feel free to use my code as a baseline or as inspiration when you do. 
-
-The main premise of the code is powering the GPIO pins in a sequence such that you will encounter a pokemon, then reset or go to the next encounter.
-The shiny detection is harder, I did it using sounddevice and checking the incoming sound against a shiny sound template. It is also possible to use a photoresistor to detect colors.  
+For now, only random encounters are reliably working for gen 4 and 5. 
 
 1.  **Install Dependencies:**
-    ```bash
-    pip install RPi.GPIO pushover-python
+    On your raspberry pi, run:
+    ```
+    sudo apt-get update
+    sudo apt-get install python3-dev
+    sudo apt-get install libasound2-dev
     ```
 
-2.  **Configure the Script:**
+    Then
+
+    ```
+    pip3 install sounddevice RPi.GPIO pushover-notifications numpy scipy
+    ```
+
+3.  **Configure the Script:**
     *   Rename the `config.ini.example` file to `config.ini`.
     *   Open `config.ini` with a text editor.
     *   Fill in your Pushover API keys if you want notifications.
     *   Adjust the GPIO pin numbers and audio input device to match your specific setup. Change `Thresholds` and `Timings` if necessary.
 
-3.  **Run the Script:**
+4.  **Run the Script:**
     ```bash
     python main.py
     ```
-    The script will then ask you for the Pokémon generation and the type of hunt you want to perform.
+    The script will then ask you for the Pokémon generation and the type of hunt you want to perform, as well as whether any extra time has to be added for ability procs        and weather messages etc. Note that at this point in time, only random encounters are reliably working. Happy hunting!
